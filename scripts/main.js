@@ -51,7 +51,7 @@ weatherMount.innerHTML = `
   <span class="visually-hidden">Loading...</span>
 </div>`;
 
-const city_name = "london,uk";
+const city_name = "London, UK";
 const API_key = "38156ee648f17645a3ed8ccbf2306d5d";
 
 // create the URL

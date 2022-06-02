@@ -1,6 +1,3 @@
-.col {
-  outline: 1px red solid;
-}
 
 /* Global Styles */
 
@@ -15,6 +12,7 @@
     font-size: 1rem;
     text-align: center;
 }
+
 
 /* Navigation Styles */
 
@@ -42,3 +40,6 @@
 
 /* Weather Display Styles */
 
+.card {
+    margin: auto;
+}

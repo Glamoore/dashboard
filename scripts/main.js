@@ -82,19 +82,66 @@ function renderWeather(data) {
   } = data;
 
   weatherMount.innerHTML = `
-<div class="card">
+<div class="card text-center text-bg-light mb-3 border-dark" style="width: 40rem; height: 47rem">
+<img src="images/London-Skyline.jpg" class="card-img-top" alt="London-Skyline" style="height: 25rem;">
   <div class="card-body">
-    <h2 class="card-title">${name}</h2>
-    <dl>
-    <dt>Temperature</dt>
-    <dd>${temp}&deg;C</dd>
-    <dt>Wind</dt>
-    <dd>${speed}km per houe (direction: ${deg}&deg)</dd>
-    </dl>
-  </div>
+    <h2 class="card-header">${name}</h2>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Temperature: ${temp}&deg;C</li>
+    <li class="list-group-item">Wind Speed: ${speed}km per hour</li>
+    <li class="list-group-item">Wind Direction: ${deg}&deg</li>
+  </ul>
 </div>
 `;
 }
+
+// Film
+
+const avatarMount = document.getElementById("film-mount");
+
+avatarMount.innerHTML = `
+<div class="spinner-border text-primary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>`;
+
+// create the URL
+const avatarEndpoint = `https://api.sampleapis.com/avatar/info`;
+
+try {
+  const response = await fetch(avatarEndpoint);
+  if (!response.ok) throw response;
+
+  const data = await response.json();
+
+  renderAvatar(data);
+} catch (err) {
+  console.log("🚀 ~ file: main.js ~ line 196 ~ err", err);
+  avatarMount.textContent = err.message; // 'Error: Server request failed'
+  avatarMount.innerHTML = `<div class="alert alert-info" role="alert">
+    ${err.message}
+  </div>`;
+}
+
+function renderAvatar(data) {
+  console.log("🚀 ~ file: main.js ~ line 204 ~ renderAvatar ~ data", data);
+
+  const {
+    0: { synopsis, yearsAired, genres },
+  } = data;
+
+  avatarMount.innerHTML = `
+  <div class="card text-center text-bg-light mb-3 border-dark" style="width: 40rem; height: 47rem;">
+  <img src="images/Film.jpg" class="card-img-top" alt="Film" style=" height: 25rem;">
+    <div class="card-body">
+      <h2 class="card-header">Avatar</h2>
+      <p class="card-text">${synopsis}</p>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Shown between: ${yearsAired}</li>
+  </div>
+  `;
+}
+
 
 // News
 
@@ -171,53 +218,5 @@ setInterval(() => {
   loadNews(newsDisplay, renderNews);
 }, loadInterval);
 
-// Film
 
-const avatarMount = document.getElementById("film-mount");
 
-avatarMount.innerHTML = `
-<div class="spinner-border text-primary" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>`;
-
-// create the URL
-const avatarEndpoint = `https://api.sampleapis.com/avatar/info`;
-
-try {
-  const response = await fetch(avatarEndpoint);
-  if (!response.ok) throw response;
-
-  const data = await response.json();
-
-  renderAvatar(data);
-} catch (err) {
-  console.log("🚀 ~ file: main.js ~ line 196 ~ err", err);
-  avatarMount.textContent = err.message; // 'Error: Server request failed'
-  avatarMount.innerHTML = `<div class="alert alert-info" role="alert">
-    ${err.message}
-  </div>`;
-}
-
-function renderAvatar(data) {
-  console.log("🚀 ~ file: main.js ~ line 204 ~ renderAvatar ~ data", data);
-
-  const {
-    0: { synopsis, yearsAired, genres },
-  } = data;
-
-  avatarMount.innerHTML = `
-<div class="card">
-  <div class="card-body">
-    <h2 class="card-title">Avatar</h2>
-    <dl>
-    <dt>Synopsis</dt>
-    <dd>${synopsis}</dd>
-    </dl>
-    <dl>
-    <dt>Years Aired</dt>
-    <dd>${yearsAired}</dd>
-    </dl>
-  </div>
-</div>
-`;
-}

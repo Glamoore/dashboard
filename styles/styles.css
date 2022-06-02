@@ -1,3 +1,44 @@
 .col {
-    outline: 1px red solid;
+  outline: 1px red solid;
 }
+
+/* Global Styles */
+
+.headings {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 0.5em;
+}
+
+.display-text {
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* Navigation Styles */
+
+.navbar-brand {
+  margin-left: 1.5em;
+  font-size: 1.8rem;
+}
+
+.navigation-img {
+    margin-left: 0.25em;
+}
+
+.navbar-collapse {
+  margin-right: 1.5em;
+  justify-content: flex-end;
+  font-size: 1.8rem;
+}
+
+/* Date & Time Display Styles */
+
+.date-time-text {
+    padding: 0.5em 0 0.5em 0;
+    font-size: 1.5rem;
+}
+
+/* Weather Display Styles */
+

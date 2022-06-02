@@ -4,7 +4,6 @@ let today = new Date();
 const dateDisplay = document.getElementById("date");
 const timeDisplay = document.getElementById("time");
 
-
 dateDisplay.textContent = getFormattedDate(today);
 
 function getFormattedDate(dateobj, format = "en-GB") {
@@ -172,10 +171,9 @@ setInterval(() => {
   loadNews(newsDisplay, renderNews);
 }, loadInterval);
 
+// Film
 
-// Avatar
-
-const avatarMount = document.getElementById("avatar-mount");
+const avatarMount = document.getElementById("film-mount");
 
 avatarMount.innerHTML = `
 <div class="spinner-border text-primary" role="status">
@@ -193,7 +191,7 @@ try {
 
   renderAvatar(data);
 } catch (err) {
-console.log("🚀 ~ file: main.js ~ line 196 ~ err", err)
+  console.log("🚀 ~ file: main.js ~ line 196 ~ err", err);
   avatarMount.textContent = err.message; // 'Error: Server request failed'
   avatarMount.innerHTML = `<div class="alert alert-info" role="alert">
     ${err.message}
@@ -201,7 +199,7 @@ console.log("🚀 ~ file: main.js ~ line 196 ~ err", err)
 }
 
 function renderAvatar(data) {
-console.log("🚀 ~ file: main.js ~ line 204 ~ renderAvatar ~ data", data)
+  console.log("🚀 ~ file: main.js ~ line 204 ~ renderAvatar ~ data", data);
 
   const {
     0: { synopsis, yearsAired, genres },
@@ -219,13 +217,7 @@ console.log("🚀 ~ file: main.js ~ line 204 ~ renderAvatar ~ data", data)
     <dt>Years Aired</dt>
     <dd>${yearsAired}</dd>
     </dl>
-    <dl>
-    <dt>Genres</dt>
-    <dd>${genres}</dd>
-    </dl>
   </div>
 </div>
 `;
 }
-
-

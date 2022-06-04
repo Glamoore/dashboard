@@ -142,7 +142,6 @@ function renderAvatar(data) {
   `;
 }
 
-
 // News
 
 const newsDisplay = document.getElementById("news-mount");
@@ -217,6 +216,3 @@ setInterval(() => {
   loadDynamicWeather(weatherDisplay, renderWeather);
   loadNews(newsDisplay, renderNews);
 }, loadInterval);
-
-
-
